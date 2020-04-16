@@ -1,12 +1,13 @@
-let counter = 0;
+const db = require("../models");
 
-const getCurrentCounter = (req, res) => {
-  res.send(String(counter));
+const getCurrentCounter = async (req, res) => {
+  const counter = await db.counter.findOne({ where: { user_id: req.user.id } });
+  res.send(String(counter.current));
 };
 
-const updateCounter = (req, res) => {
+const updateCounter = async (req, res) => {
   const newCounter = req.body.counter;
-  counter = newCounter;
+  await db.counter.update({ newCounter }, { where: { user_id: req.user.id } });
   res.send(String(counter));
 };
 
