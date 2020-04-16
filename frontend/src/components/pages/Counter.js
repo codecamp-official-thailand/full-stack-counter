@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "./config/axios";
-import "./App.css";
+import axios from "../../config/axios";
 
-function App() {
+function Counter() {
   const [counter, setCounter] = useState(0);
 
   const fetchData = async () => {
@@ -34,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Counter;
